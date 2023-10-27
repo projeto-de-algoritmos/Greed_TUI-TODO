@@ -51,6 +51,7 @@ func (f form) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case "enter":
 			if f.index == 3 {
 				createTask()
+				f.cleanForm()
 			}else{
 				f.nextForm()
 			}
@@ -75,6 +76,14 @@ func (f *form) previousForm() {
 	}
 	f.index--
 	f.getCurrentInput().Focus()
+}
+
+func (f *form) cleanForm() {
+	for i:=0; i<4; i++ {
+		f.answerFields[i].SetValue("")
+	}
+	f.index = 0
+	f.answerFields[f.index].Focus()
 }
 
 func (f *form) getCurrentInput() *textinput.Model {
