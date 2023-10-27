@@ -44,6 +44,10 @@ func (f form) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type){
 	case tea.KeyMsg:
 		switch msg.String(){
+		case "ctrl+p":
+			f.previousForm()
+		case "ctrl+n":
+			f.nextForm()
 		case "enter":
 			if f.index == 3 {
 				createTask()
@@ -62,6 +66,14 @@ func (f *form) nextForm() {
 		return
 	}	
 	f.index++
+	f.getCurrentInput().Focus()
+}
+
+func (f *form) previousForm() {
+	if f.index == 0 {
+		return
+	}
+	f.index--
 	f.getCurrentInput().Focus()
 }
 
