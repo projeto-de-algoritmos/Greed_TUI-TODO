@@ -16,3 +16,7 @@ func defaultStyle() *style{
 	Padding(1).Width(80)
 	return s
 }
+
+var tableStyle = lipgloss.NewStyle().
+	BorderStyle(lipgloss.NormalBorder()).
+	BorderForeground(lipgloss.Color("240"))
