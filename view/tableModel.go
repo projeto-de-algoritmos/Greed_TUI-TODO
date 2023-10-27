@@ -1,18 +1,13 @@
 package view
 
 import (
-	tea "github.com/charmbracelet/bubbletea"
 	tb "github.com/charmbracelet/bubbles/table"
+	tea "github.com/charmbracelet/bubbletea"
 
 	"github.com/charmbracelet/lipgloss"
-)
 
-type task struct {
-	title string
-	description string
-	deadline string
-	duration string
-}
+	sch "tui-todo/scheduling"
+)
 
 type table struct {
 	cols []tb.Column
@@ -37,8 +32,8 @@ func newTable() *table {
 	cols := []tb.Column{
 		{Title: "Tarefa", Width: 10},
 		{Title: "Descrição", Width: 20},
+		{Title: "Início", Width: 20},
 		{Title: "Entrega", Width: 30},
-		{Title: "Duração", Width: 30},
 	}
 
 	ttable := tb.New(
@@ -58,12 +53,20 @@ func newTable() *table {
 	return t
 }
 
-func (t *table) addTask (tk task) {
-	t.rows = append(t.rows, tb.Row{
-		tk.title,
-		tk.description,
-		tk.duration,
-		tk.deadline,
-	})
+func (t *table) addTask (tk sch.Task) {
+	task = append(task, tk)
+	schTask := sch.Scheduling(task)
+
+	var newRows []tb.Row
+	for _, st := range schTask {
+		newRows = append(newRows, tb.Row{
+			st.T.Title,
+			st.T.Description,
+			st.Start.Format(sch.DeadFormat),
+			st.End.Format(sch.DeadFormat),
+
+		})
+	}
+	t.rows = newRows
 	t.t.SetRows(t.rows)
 }

@@ -1,6 +1,9 @@
 package view
 
 import (
+	"time"
+	sch "tui-todo/scheduling"
+
 	"github.com/charmbracelet/bubbles/textinput"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
@@ -43,7 +46,7 @@ func (f form) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		switch msg.String(){
 		case "enter":
 			if f.index == 3 {
-				t.addTask(f.createTask())
+				createTask()
 			}else{
 				f.nextForm()
 			}
@@ -92,11 +95,19 @@ func newForm() *form{
 	return f
 }
 
-func (f *form) createTask() task{
-	return task{
-		f.answerFields[0].Value(),
-		f.answerFields[1].Value(),
-		f.answerFields[2].Value(),
-		f.answerFields[3].Value(),
-	}	
+func createTask() {
+	title := f.answerFields[0].Value()
+	desc := f.answerFields[1].Value()
+	dead, err1 := time.Parse(sch.DeadFormat, f.answerFields[2].Value())
+	dur, err2 := time.ParseDuration(f.answerFields[3].Value())
+
+	if err1 != nil || err2 != nil {
+	} 
+	task := sch.Task{
+		Title: title,
+		Description: desc,
+		Deadline: dead,
+		Duration: dur,
+	}
+	t.addTask(task)
 }

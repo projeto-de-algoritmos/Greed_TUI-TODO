@@ -2,6 +2,7 @@ package view
 
 import (
 	tea "github.com/charmbracelet/bubbletea"
+	sch "tui-todo/scheduling"
 )
 
 const (
@@ -15,6 +16,9 @@ type model struct {
 
 var f = newForm()
 var t = newTable()
+var task []sch.Task
+
+var tasks []sch.Task
 
 func (m model) Init() tea.Cmd {
 	return nil
