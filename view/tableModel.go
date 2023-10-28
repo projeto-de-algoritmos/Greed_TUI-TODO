@@ -9,6 +9,8 @@ import (
 	sch "tui-todo/scheduling"
 )
 
+
+
 type table struct {
 	index int
 	cols []tb.Column
@@ -21,7 +23,13 @@ func (t table) Init() tea.Cmd {
 }
 
 func (t table) View() string {
-	return tableStyle.Render(t.t.View()) + "\n"
+	return lipgloss.Place(
+		width,
+		height,
+		lipgloss.Center,
+		lipgloss.Center,
+		tableStyle.Render(t.t.View()) + "\n",
+	)
 }
 
 func (t table) Update(msg tea.Msg) (tea.Model, tea.Cmd) {

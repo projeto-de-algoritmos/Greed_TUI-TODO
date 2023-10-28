@@ -30,6 +30,7 @@ func (f form) View() string {
 			f.styles.InputField.Render(f.answerFields[i].View()),
 		)
 	}
+	s+="\n"
 	return lipgloss.Place(
 		width,
 		height,
