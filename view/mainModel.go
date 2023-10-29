@@ -67,5 +67,5 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func InitModel() model{
-	return model{}
+	return model{state: ctable}
 }
