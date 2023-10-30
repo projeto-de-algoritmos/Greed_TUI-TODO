@@ -10,7 +10,7 @@
 
 ## Sobre 
 
-Um simples TUDO, que utiliza 
+Um simples TUDO, que utiliza interval scheduling para organizar as tarefas.
 
 ## Screenshots
 
@@ -20,12 +20,13 @@ Um simples TUDO, que utiliza
 ## Instalação 
 - **Linguagem**: Go
 
-
 ``` sh
 go run .
 ```
 
 ## Uso 
 
-## Outro
-
+Ctrl+c para sair
+Ctrl+n para adicionar uma nova tarefa.
+Ctrl+p para selecionar o input anterior.
+Ctrl+n para selecionar o próximo input.
