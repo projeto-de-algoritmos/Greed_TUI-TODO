@@ -1,6 +1,7 @@
 package view
 
 import (
+	"strings"
 	"time"
 	sch "tui-todo/scheduling"
 
@@ -21,22 +22,21 @@ func (f form) Init() tea.Cmd {
 }
 
 func (f form) View() string {
-	var s string
+	var s strings.Builder
 	for i := range f.questions {
-		s += lipgloss.JoinVertical(
-			lipgloss.Center,
+		s.WriteString(lipgloss.JoinVertical(
+			lipgloss.Left,
 			"\n",
 			f.questions[i],
 			f.styles.InputField.Render(f.answerFields[i].View()),
-		)
+		))
 	}
-	s+="\n"
 	return lipgloss.Place(
 		width,
 		height,
 		lipgloss.Center,
 		lipgloss.Center,
-		s,
+		s.String(),
 	)
 }
 

@@ -9,8 +9,6 @@ import (
 	sch "tui-todo/scheduling"
 )
 
-
-
 type table struct {
 	index int
 	cols []tb.Column
@@ -48,10 +46,11 @@ func (t table) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 func newTable() *table {
 	cols := []tb.Column{
-		{Title: "Tarefa", Width: 10},
+		{Title: "Tarefa", Width: 15},
 		{Title: "Descrição", Width: 30},
 		{Title: "Início", Width: 20},
 		{Title: "Entrega", Width: 20},
+		{Title: "Término", Width: 20},
 	}
 
 	ttable := tb.New(
@@ -85,6 +84,7 @@ func (t *table) addTask (tk sch.Task) {
 			st.T.Description,
 			st.Start.Format(sch.DeadFormat),
 			st.End.Format(sch.DeadFormat),
+			st.T.Deadline.Format(sch.DeadFormat),
 		})
 	}
 	t.rows = newRows
