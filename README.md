@@ -14,9 +14,8 @@ Um simples TUDO, que utiliza
 
 ## Screenshots
 
-<img width="300" height="300" src="assets/" />
-<img width="300" height="300" src="assets/" />
-<img width="300" height="300" src="assets/" />
+<img width="300" height="300" src="assets/figure1.png" />
+<img width="300" height="300" src="assets/figure2.png" />
 
 ## Instalação 
 - **Linguagem**: Go
