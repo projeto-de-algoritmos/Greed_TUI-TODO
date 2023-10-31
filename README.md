@@ -20,13 +20,19 @@ Um simples TUDO, que utiliza interval scheduling para organizar as tarefas.
 ## Instalação 
 - **Linguagem**: Go
 
+Para executar o projeto é necessário [baixar](https://go.dev/doc/install) a linguagem Go.
+
 ``` sh
 go run .
 ```
 
 ## Uso 
 
-Ctrl+c para sair
-Ctrl+n para adicionar uma nova tarefa.
-Ctrl+p para selecionar o input anterior.
-Ctrl+n para selecionar o próximo input.
+    Ctrl+c para sair
+    Ctrl+n para adicionar uma nova tarefa.
+    Ctrl+p para selecionar o input anterior.
+    Ctrl+n para selecionar o próximo input.
+
+## Outros
+
+[Vídeo do projeto](https://youtu.be/wuUseAOgn8Y)
